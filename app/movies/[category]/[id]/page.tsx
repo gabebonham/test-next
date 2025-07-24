@@ -1,8 +1,10 @@
 'use client'
+import LoadingScreen from '@/app/_components/LoadingScreen'
 import { TitleType } from '@/app/_types/title-type'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { useParams } from 'next/navigation'
+import Link from 'next/link'
+import { useParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 export default function MoviePage() {
@@ -12,7 +14,7 @@ export default function MoviePage() {
   const [data, setData] = useState<TitleType | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-
+  const router = useRouter()
   useEffect(() => {
     if (!id || !category) return
 
@@ -32,18 +34,26 @@ export default function MoviePage() {
     fetchMovie()
   }, [category, id])
 
-  if (!data) return <div className="h-full">Not found</div>
-  if (loading) return <div className="h-full">Loading...</div>
-  if (error) return <div className="h-full">{error}</div>
-  if (!id || !category)
-    return <div className="h-full">not found for id and category</div>
+  if (!data) return <LoadingScreen />
+  if (loading) return <LoadingScreen />
+  if (error)
+    return (
+      <div className="flex flex-col justify-center items-center justify-center h-screen">
+        <h1 className="text-4xl font-bold">
+          Conteudo não encontrado para id: {id} e categoria: {category}
+        </h1>
+        <Button onClick={() => router.back()}>Voltar</Button>
+      </div>
+    )
   else
     return (
       <div
-        className="h-full"
-        style={{ backgroundImage: `url(${data?.Poster})` }}
+        className="h-full bg-cover bg-center pt-56 pb-36 space-y-6 px-4"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,0.9)), url(${data?.Poster})`,
+        }}
       >
-        <div className="flex">
+        <div className="flex flex-wrap gap-x-2 gap-y-2">
           {data?.Ratings.map((rating) => (
             <Badge>
               {rating.Value} por {rating.Source}
@@ -51,12 +61,14 @@ export default function MoviePage() {
           ))}
         </div>
         <div>
-          <h1>{data?.Title}</h1>
+          <h1 className="text-5xl">{data?.Title}</h1>
         </div>
         <div>
           <p>{data?.Plot}</p>
         </div>
-        <Button>Ir para Página IMDb</Button>
+        <Link href={`https://www.imdb.com/title/${data?.imdbID}`}>
+          <Button>Ir para Página IMDb</Button>
+        </Link>{' '}
       </div>
     )
 }
