@@ -24,8 +24,8 @@ export function CarouselComponent({ search }: { search: Props }) {
         {search.Search.map((item, index) => (
           <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
             <Link href={`/title/${item.imdbID}`}>
-              <div className="p-1">
-                <Card className="bg-shade2 border-shade1 text-shade5">
+              <div className="px-4 py-14">
+                <Card className="bg-shade2 border-shade1 text-shade5 hover:shadow-2xl/50 hover:border-shade3 transition-all delay-50">
                   <CardContent className="h-96 overflow-hidden">
                     <Image
                       src={item.Poster}

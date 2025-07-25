@@ -144,7 +144,7 @@ export default function MoviesSearchPage() {
           <div className="grid grid-cols-2 w-full gap-4 px-2 lg:grid-cols-3 md:gap-10">
             {data.map((s) => (
               <Link href={`/title/${s.imdbID}`}>
-                <Card className="bg-shade2 border-shade1 text-shade5">
+                <Card className="bg-shade2 border-shade1 text-shade5 hover:shadow-2xl/50 hover:border-shade3 transition-all delay-50">
                   <CardContent className=" overflow-hidden h-32 lg:h-64">
                     <Image
                       src={s.Poster}

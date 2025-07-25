@@ -21,13 +21,13 @@ export default async function HomePage() {
           </h1>
         </div>
         <div>
-          <h1 className="text-xl py-4">Filmes</h1>
+          <h1 className="text-2xl py-4">Filmes</h1>
           <CarouselComponent
             search={{ Search: movies } as { Search: SearchItemType[] }}
           />
         </div>
         <div>
-          <h1 className="text-xl py-4">Series</h1>
+          <h1 className="text-2xl py-4">Series</h1>
           <CarouselComponent
             search={{ Search: shows } as { Search: SearchItemType[] }}
           />

@@ -22,10 +22,30 @@ export default function HeaderComponent() {
           </Link>
         </div>
         <div className="sm:flex sm:px-12 sm:gap-x-6 items-center hidden lg:text-xl">
-          <Link href={'/mock'}>Filmes</Link>
-          <Link href={'/mock'}>Séries</Link>
-          <Link href={'/mock'}>Gêneros</Link>
-          <Link href={'/mock'}>Top</Link>
+          <Link
+            className="hover:text-primary transition-colors "
+            href={'/mock'}
+          >
+            Filmes
+          </Link>
+          <Link
+            className="hover:text-primary transition-colors "
+            href={'/mock'}
+          >
+            Séries
+          </Link>
+          <Link
+            className="hover:text-primary transition-colors "
+            href={'/mock'}
+          >
+            Gêneros
+          </Link>
+          <Link
+            className="hover:text-primary transition-colors "
+            href={'/mock'}
+          >
+            Top
+          </Link>
         </div>
         <div className="sm:hidden text-primary">
           <NavBarDrawer />
