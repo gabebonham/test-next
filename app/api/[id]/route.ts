@@ -9,8 +9,12 @@ export async function GET(
   try {
     const { id } = await params
     const key = process.env.KEY
-    const url = `http://www.omdbapi.com/?apikey=${key}&i=${id}`
-    const res = await fetch(url).then((r) => r.json())
+    const backend = process.env.BACKEND_URL
+    const url = `${backend}/title`
+    const res = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({ i: id }),
+    }).then((r) => r.json())
     return Response.json(res)
   } catch (e) {
     return Response.json(e)
