@@ -15,6 +15,10 @@ export async function POST(req: Request) {
 
     const res = await fetch(url, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
       body: JSON.stringify({ s, i: isId, type, page }),
     }).then((r) => r.json())
     return Response.json(res)

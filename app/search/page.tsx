@@ -21,9 +21,10 @@ import {
   useRouter,
   useSearchParams,
 } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
+import LoadingScreen from '../_components/LoadingScreen'
 
-export default function MoviesSearchPage() {
+function SearchComponent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const pathname = usePathname()
@@ -180,5 +181,12 @@ export default function MoviesSearchPage() {
         <div className="w-full flex justify-center">Pesquise algo a cima!</div>
       )}
     </div>
+  )
+}
+export default function MoviesSearchPage() {
+  return (
+    <Suspense fallback={<LoadingScreen />}>
+      <SearchComponent />
+    </Suspense>
   )
 }
