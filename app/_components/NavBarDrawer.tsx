@@ -22,11 +22,11 @@ export default function NavBarDrawer() {
       </DrawerTrigger>
       <DrawerContent className="z-60 bg-shade2">
         <div className="flex flex-col justify-start px-4 gap-y-10 py-8 ">
-          <Link href="/movies" className="text-3xl flex items-center gap-x-4">
+          <Link href="/mock" className="text-3xl flex items-center gap-x-4">
             <Film />
             <p>Filmes</p>
           </Link>
-          <Link href="/shows" className="text-3xl flex items-center gap-x-4">
+          <Link href="/mock" className="text-3xl flex items-center gap-x-4">
             <Film />
             <p>Séries</p>
           </Link>

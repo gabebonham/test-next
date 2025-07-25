@@ -13,24 +13,26 @@ export default async function HomePage() {
     (s) => s.Type.toLocaleLowerCase() == 'movie',
   )
   return (
-    <section className="h-full w-full px-4 flex flex-col gap-y-16">
-      <div className="py-8">
-        <h1 className="text-3xl">
-          Bem vindo(a)! Ao melhor repositório cinéfilo!
-        </h1>
-      </div>
-      <div>
-        <h1 className="text-xl py-4">Filmes</h1>
-        <CarouselComponent
-          search={{ Search: movies } as { Search: SearchItemType[] }}
-        />
-      </div>
-      <div>
-        <h1 className="text-xl py-4">Series</h1>
-        <CarouselComponent
-          search={{ Search: shows } as { Search: SearchItemType[] }}
-        />
-      </div>
-    </section>
+    <div className="lg:w-full sm:w-3/4 md:w-5/6  w-full">
+      <section className="h-full w-full px-4  pb-8 flex flex-col gap-y-16 lg:px-10">
+        <div className="py-8">
+          <h1 className="text-3xl">
+            Bem vindo(a)! Ao melhor repositório cinéfilo!
+          </h1>
+        </div>
+        <div>
+          <h1 className="text-xl py-4">Filmes</h1>
+          <CarouselComponent
+            search={{ Search: movies } as { Search: SearchItemType[] }}
+          />
+        </div>
+        <div>
+          <h1 className="text-xl py-4">Series</h1>
+          <CarouselComponent
+            search={{ Search: shows } as { Search: SearchItemType[] }}
+          />
+        </div>
+      </section>
+    </div>
   )
 }

@@ -22,8 +22,8 @@ export function CarouselComponent({ search }: { search: Props }) {
     <Carousel className="w-full ">
       <CarouselContent>
         {search.Search.map((item, index) => (
-          <CarouselItem key={index}>
-            <Link href={`https://www.imdb.com/title/${item.imdbID}`}>
+          <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+            <Link href={`/title/${item.imdbID}`}>
               <div className="p-1">
                 <Card className="bg-shade2 border-shade1 text-shade5">
                   <CardContent className="h-96 overflow-hidden">
